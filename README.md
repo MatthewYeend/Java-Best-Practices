@@ -165,6 +165,20 @@ Using `StringBuilder` is more efficient than repeatedly concatenating strings, a
 	- `char` (character)
 	- `boolean` (true/false)
 ### Intermediate
+- What is the difference between an ArrayList and a LinkedList?
+    - | Feature | ArrayList | LinkedList
+      |---|---|---|
+      | Storage | Dynamic array | Doubly linked list |
+      | Access Time | Fast (O(1)) random access | Slow (O(n)) sequential access |
+      | Insert/Delete | Slow (O(n)) | Fast (O(1) at head/tail) |
+      | Memory Usage | Less (contiguous memory) | More (extra pointers) |
+- What is the difference between `final`, `finally`, and `finalize()`?
+    - `final`: Used for constants, preventing method overriding or inheritance.
+	- `finally`: A block in a try-catch-finally statement that always executes.
+	- `finalize()`: A method called before an object is garbage collected.
+- How does Java achieve memory management?
+    - Heap and Stack: Java uses a heap (for objects) and stack (for local variables).
+	- Garbage Collection: Java automatically removes unused objects.
 ### Expert
 ### General
 ### Miscellaneous Questions
