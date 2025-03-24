@@ -147,3 +147,26 @@ Using `StringBuilder` is more efficient than repeatedly concatenating strings, a
 | Packages | lowercase, domain-based | `com.example.service` | `Com.Example.Service` |
 | Static Variables | camelCase | `defaultConfig`, `appName` | `DefaultConfig`, `APP_NAME` |
 | Test Classes | PascalCase with Test suffix | `UserServiceTest`, `OrderTest` | `userservicetest`, `ordertest` |
+
+---
+## Interview Questions
+### Beginner
+- What are Java’s key features?
+	- Platform-Independent: Java runs on any OS with a JVM.
+	- Object-Oriented: Java supports OOP principles like inheritance and polymorphism.
+	- Multi-threaded: Java supports concurrent programming using threads.
+	- Garbage Collection: Automatic memory management via the Garbage Collector.
+- What is the difference between `==` and `.equals()` in Java?
+    - `==` checks if two references point to the same object in memory.
+	- `.equals()` checks if two objects have the same value.
+- What are Java’s primitive data types?
+    - `byte`, `short`, `int`, `long` (integer types)
+	- `float`, `double` (floating-point types)
+	- `char` (character)
+	- `boolean` (true/false)
+### Intermediate
+### Expert
+### General
+### Miscellaneous Questions
+
+---
