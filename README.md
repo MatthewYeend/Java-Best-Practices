@@ -180,6 +180,16 @@ Using `StringBuilder` is more efficient than repeatedly concatenating strings, a
     - Heap and Stack: Java uses a heap (for objects) and stack (for local variables).
 	- Garbage Collection: Java automatically removes unused objects.
 ### Expert
+- What is the difference between checked and unchecked exceptions?
+    - Checked Exception: Must be handled using try-catch or declared with throws.
+	    - Example: `IOException`, `SQLException`.
+	- Unchecked Exception: Extends RuntimeException, doesn’t require handling.
+	    - Example: `NullPointerException`, `ArrayIndexOutOfBoundsException`.
+- What is the purpose of volatile in Java?
+    - The volatile keyword ensures that changes to a variable are visible to all threads immediately, preventing caching issues.
+- What is the difference between synchronized and lock in Java?
+    - `synchronized` is a keyword that locks an object or method.
+	- Lock (from `java.util.concurrent.locks`) provides more flexibility, allowing try-lock and timed locking.
 ### General
 ### Miscellaneous Questions
 
