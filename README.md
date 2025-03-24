@@ -191,6 +191,24 @@ Using `StringBuilder` is more efficient than repeatedly concatenating strings, a
     - `synchronized` is a keyword that locks an object or method.
 	- Lock (from `java.util.concurrent.locks`) provides more flexibility, allowing try-lock and timed locking.
 ### General
+- What is the difference between String, StringBuilder, and StringBuffer?
+    - | Feature | `String` (Immutable) | `StringBuilder` (Mutable) | `StringBuffer` (Thread-Safe) |
+      |---|---|---|---| 
+      | Thread Safety | No | No | Yes |
+      | Performance | Slow | Fast | Slower than `StringBuilder` |
+- What is the Java Collections Framework?
+    - A set of classes and interfaces for working with data structures like lists, sets, and maps.
+	    - List: `ArrayList`, `LinkedList`
+	    - Set: `HashSet`, `TreeSet`
+	    - Map: `HashMap`, `TreeMap`
+
 ### Miscellaneous Questions
+- What is the `transient` keyword in Java?
+    - The `transient` keyword prevents a field from being serialized.
+- What are Java 8 features?
+    - Lambda Expressions
+	- Streams API
+	- Functional Interfaces
+	- Optional Class
 
 ---
