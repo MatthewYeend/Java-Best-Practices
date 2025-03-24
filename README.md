@@ -141,7 +141,7 @@ Using `StringBuilder` is more efficient than repeatedly concatenating strings, a
 | Constants | UPPER_SNAKE_CASE | `MAX_RETRIES`, `DEFAULT_TIMEOUT` | `MaxRetries`, `defaultTimeout` | 
 | Enum Names | PascalCase | `OrderStatus`, `UserType` | `order_status`, `usertype` | 
 | Exceptions | PascalCase with Exception suffix | `InvalidInputException` | `invalidinputexception` |
-| Interfaces PascalCase, usually adjective-based | `Runnable`, `Serializable` | `runnable`, `serializable` | 
+| Interfaces | PascalCase, usually adjective-based | `Runnable`, `Serializable` | `runnable`, `serializable` | 
 | Local Variables | camelCase | `orderCount`, `userId` | `Order_count`, `User_ID` |
 | Methods | camelCase | `calculateTotal()`, `getUserId()` | `Calculate_Total()`, `GetUserID()` |
 | Packages | lowercase, domain-based | `com.example.service` | `Com.Example.Service` |
