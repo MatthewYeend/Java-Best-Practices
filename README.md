@@ -120,3 +120,30 @@ for (int i = 0; i < 10; i++) {
 Using `StringBuilder` is more efficient than repeatedly concatenating strings, as it avoids creating multiple immutable `String` objects.
 
 ---
+## Best Practices accepted by community
+| Task | Standard Tools | 3rd Party Tools |
+|---|---|---|
+| API Documentation | Javadoc | Swagger, Postman collections |
+| API Security | Spring Security, Java EE Security | Custom JWT/OAuth implementations |
+| Build Tool | Maven, Gradle |Ant, Bazel |
+| Database Access | JDBC, JPA, Hibernate | MyBatis, jOOQ |
+| Dependency Injection | Spring Framework, Jakarta CDI | Google Guice |
+| Logging | SLF4J + Logback, Java Util Logging (JUL) | Log4j |
+| Testing | JUnit, TestNG, Mockito | Spock, Cucumber |
+| Web Frameworks | Spring Boot, Java EE (Jakarta EE) | Play Framework, Micronaut | 
+
+--- 
+## Java Naming Conventions
+| What | How | Good | Bad |
+|---|---|---|---|
+| Class Attributes | CamelCase, start with a lowercase letter | `customerName`, `totalAmount` | `Customer_name`, `TOTALAMOUNT` |
+| Classes | PascalCase | `CustomerDetails`, `OrderProcessor` | `customerDetails`, `order_processor` |
+| Constants | UPPER_SNAKE_CASE | `MAX_RETRIES`, `DEFAULT_TIMEOUT` | `MaxRetries`, `defaultTimeout` | 
+| Enum Names | PascalCase | `OrderStatus`, `UserType` | `order_status`, `usertype` | 
+| Exceptions | PascalCase with Exception suffix | `InvalidInputException` | `invalidinputexception` |
+| Interfaces PascalCase, usually adjective-based | `Runnable`, `Serializable` | `runnable`, `serializable` | 
+| Local Variables | camelCase | `orderCount`, `userId` | `Order_count`, `User_ID` |
+| Methods | camelCase | `calculateTotal()`, `getUserId()` | `Calculate_Total()`, `GetUserID()` |
+| Packages | lowercase, domain-based | `com.example.service` | `Com.Example.Service` |
+| Static Variables | camelCase | `defaultConfig`, `appName` | `DefaultConfig`, `APP_NAME` |
+| Test Classes | PascalCase with Test suffix | `UserServiceTest`, `OrderTest` | `userservicetest`, `ordertest` |
