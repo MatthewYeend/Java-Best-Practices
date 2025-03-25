@@ -7,9 +7,13 @@
 4. [Code Formatting](#code-formatting)
 5. [Avoiding Redundant Code](#avoiding-redundant-code)
 6. [Using StringBuilder for Concatenation in Loops](#using-stringbuilder-for-concatenation-in-loops)
-7. [Best Practices accepted by community](#best-practices-accepted-by-community)
-8. [Java Naming Conventions](#python-naming-conventions)
-9. [Interview Questions](#interview-questions)
+7. [Proper Resource Management (Avoiding Resource Leaks)](#proper-resource-management-avoiding-resource-leaks)
+8. [Avoid Catching Generic Exceptions](#avoid-catching-generic-exceptions)
+9. [Use Enum Instead of Constant Strings](#use-enum-instead-of-constant-strings)
+10. [Using Streams Instead of Loops for Filtering](#using-streams-instead-of-loops-for-filtering)
+11. [Best Practices accepted by community](#best-practices-accepted-by-community)
+12. [Java Naming Conventions](#python-naming-conventions)
+13. [Interview Questions](#interview-questions)
     1. [Beginner](#beginner)
     2. [Intermediate](#intermediate)
     3. [Expert](#expert)
@@ -118,6 +122,85 @@ for (int i = 0; i < 10; i++) {
 }
 ```
 Using `StringBuilder` is more efficient than repeatedly concatenating strings, as it avoids creating multiple immutable `String` objects.
+
+--- 
+## Proper Resource Management (Avoiding Resource Leaks)
+### Bad
+```java
+FileReader reader = new FileReader("file.txt");
+BufferedReader br = new BufferedReader(reader);
+System.out.println(br.readLine());
+br.close();
+reader.close();
+```
+
+### Good
+```java
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    System.out.println(br.readLine());
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+Using Try-with-resources automatically closes resources, preventing memory leaks.
+
+---
+## Avoid Catching Generic Exceptions
+### Bad
+```java
+try {
+    int result = 10 / 0;
+} catch (Exception e) {
+    System.out.println("Error occurred.");
+}
+```
+
+### Good
+```java
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero.");
+}
+```
+Use Catch specific exceptions to improve debugging and error handling.
+
+---
+## Use Enum Instead of Constant Strings
+### Bad
+```java
+public static final String STATUS_ACTIVE = "ACTIVE";
+public static final String STATUS_INACTIVE = "INACTIVE";
+```
+
+### Good
+```java
+public enum Status {
+    ACTIVE, INACTIVE;
+}
+```
+Enums improve type safety, readability, and prevent invalid values.
+
+---
+## Using Streams Instead of Loops for Filtering
+### Bad
+```java
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+List<String> filteredNames = new ArrayList<>();
+for (String name : names) {
+    if (name.startsWith("A")) {
+        filteredNames.add(name);
+    }
+}
+```
+
+### Good
+```java
+List<String> filteredNames = names.stream()
+                                  .filter(name -> name.startsWith("A"))
+                                  .collect(Collectors.toList());
+```
+Streams are more concise and readable than traditional loops.
 
 ---
 ## Best Practices accepted by community
