@@ -11,9 +11,11 @@
 8. [Avoid Catching Generic Exceptions](#avoid-catching-generic-exceptions)
 9. [Use Enum Instead of Constant Strings](#use-enum-instead-of-constant-strings)
 10. [Using Streams Instead of Loops for Filtering](#using-streams-instead-of-loops-for-filtering)
-11. [Best Practices accepted by community](#best-practices-accepted-by-community)
-12. [Java Naming Conventions](#python-naming-conventions)
-13. [Interview Questions](#interview-questions)
+11. [Avoid Using Raw Types (Generics)](#avoid-using-raw-types-generics)
+12. [Prefer Interfaces Over Concrete Classes for Type References](#prefer-interfaces-over-concrete-classes-for-type-references)
+13. [Best Practices accepted by community](#best-practices-accepted-by-community)
+14. [Java Naming Conventions](#python-naming-conventions)
+15. [Interview Questions](#interview-questions)
     1. [Beginner](#beginner)
     2. [Intermediate](#intermediate)
     3. [Expert](#expert)
@@ -201,6 +203,36 @@ List<String> filteredNames = names.stream()
                                   .collect(Collectors.toList());
 ```
 Streams are more concise and readable than traditional loops.
+
+---
+## Avoid Using Raw Types (Generics)
+### Bad 
+```java
+List list = new ArrayList();
+list.add("Hello");
+String s = (String) list.get(0); // Requires explicit casting
+```
+
+### Good
+```java
+List<String> list = new ArrayList<>();
+list.add("Hello");
+String s = list.get(0); // No explicit casting needed
+```
+Using generics makes the code type-safe and eliminates unnecessary type casting.
+
+---
+## Prefer Interfaces Over Concrete Classes for Type References
+### Bad
+```java
+ArrayList<String> names = new ArrayList<>();
+```
+
+### Good
+```java
+List<String> names = new ArrayList<>();
+```
+Using interfaces (List instead of ArrayList) improves flexibility and allows for easier switching of implementations.
 
 ---
 ## Best Practices accepted by community
