@@ -20,7 +20,9 @@
 17. [Close Streams Properly](#close-streams-properly)
 18. [Favor Immutable Objects](#favor-immutable-objects)
 19. [Use @Override Annotation](#use-@Override-annotation)
-20. [Interview Questions](#interview-questions)
+20. [Use Logging Instead of System.out.println](#use-logging-instead-of-System.out.println)
+21. [Use Meaningful Constants](#use-meaningful-constants)
+22. [Interview Questions](#interview-questions)
     1. [Beginner](#beginner)
     2. [Intermediate](#intermediate)
     3. [Expert](#expert)
@@ -341,6 +343,33 @@ public class MyList extends ArrayList<String> {
 }
 ```
 `@Override` helps catch errors when method signatures change.
+
+---
+## Use Logging Instead of System.out.println
+### Bad
+```java
+System.out.println("Application started");
+```
+
+### Good
+```javaprivate static final Logger logger = LoggerFactory.getLogger(App.class);
+logger.info("Application started");
+```
+Logging frameworks give you levels (INFO, DEBUG, ERROR) and allow output redirection.
+
+---
+## Use Meaningful Constants
+### Bad 
+```java
+if (speed > 120) { /* ... */ }
+```
+
+### Good
+```java
+private static final int SPEED_LIMIT = 120;
+if (speed > SPEED_LIMIT) { /* ... */ }
+```
+Constants improve readability and make code easier to update.
 
 ---
 ## Best Practices accepted by community
