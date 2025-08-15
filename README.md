@@ -15,7 +15,12 @@
 12. [Prefer Interfaces Over Concrete Classes for Type References](#prefer-interfaces-over-concrete-classes-for-type-references)
 13. [Best Practices accepted by community](#best-practices-accepted-by-community)
 14. [Java Naming Conventions](#python-naming-conventions)
-15. [Interview Questions](#interview-questions)
+15. [Avoid Overusing Static Methods](#avoid-overusing-static-methods)
+16. [Use Optional to Avoid Null Checks](#use-optional-to-avoid-null-checks)
+17. [Close Streams Properly](#close-streams-properly)
+18. [Favor Immutable Objects](#favor-immutable-objects)
+19. [Use @Override Annotation](#use-@Override-annotation)
+20. [Interview Questions](#interview-questions)
     1. [Beginner](#beginner)
     2. [Intermediate](#intermediate)
     3. [Expert](#expert)
@@ -233,6 +238,109 @@ ArrayList<String> names = new ArrayList<>();
 List<String> names = new ArrayList<>();
 ```
 Using interfaces (List instead of ArrayList) improves flexibility and allows for easier switching of implementations.
+
+---
+## Avoid Overusing Static Methods
+### Bad 
+```java
+public class MathUtils {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+
+### Good
+```java
+public class MathUtils {
+    public int add(int a, int b) {
+        return a + b;
+    }
+}
+```
+Favor instance methods when they depend on object state or when you want to leverage polymorphism and mocking.
+
+---
+## Use `Optional` to Avoid Null Checks
+### Bad
+```java
+public String getUserName(User user) {
+    if (user != null && user.getName() != null) {
+        return user.getName();
+    }
+    return "Unknown";
+}
+```
+
+### Good
+```java
+public String getUserName(User user) {
+    return Optional.ofNullable(user)
+                   .map(User::getName)
+                   .orElse("Unknown");
+}
+
+```
+`Optional` makes null-handling explicit and avoids potential `NullPointerException`.
+
+---
+## Close Streams Properly
+### Bad
+```java
+FileInputStream fis = new FileInputStream("data.txt");
+byte[] data = fis.readAllBytes();
+fis.close();
+```
+
+### Good
+```java
+try (FileInputStream fis = new FileInputStream("data.txt")) {
+    byte[] data = fis.readAllBytes();
+}
+```
+Always close streams in a `try-with-resources` block to avoid memory leaks.
+
+---
+## Favor Immutable Objects
+### Bad
+```java
+public class User {
+    private String name;
+    public void setName(String name) { this.name = name; }
+}
+```
+
+### Good
+```java
+public final class User {
+    private final String name;
+    public User(String name) { this.name = name; }
+    public String getName() { return name; }
+}
+```
+Immutable objects are thread-safe, easier to reason about, and prevent unintended changes.
+
+---
+## Use `@Override` Annotation
+### Bad
+```java
+public class MyList extends ArrayList<String> {
+    public boolean add(String s) {  // No @Override
+        return super.add(s);
+    }
+}
+```
+
+### Good
+```java
+public class MyList extends ArrayList<String> {
+    @Override
+    public boolean add(String s) {
+        return super.add(s);
+    }
+}
+```
+`@Override` helps catch errors when method signatures change.
 
 ---
 ## Best Practices accepted by community
